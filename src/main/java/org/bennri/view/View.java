@@ -80,11 +80,8 @@ public class View extends JFrame{
                     pwField.setText(newPW);
                     pwField.revalidate();
                 }
-
-
             }
         });
-
 
         copyToClipBoardButton.addMouseListener(new MouseAdapter() {
             @Override

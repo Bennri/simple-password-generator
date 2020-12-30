@@ -15,20 +15,11 @@ public class PasswordGenerator {
         this.logger = Logger.getLogger(PasswordGenerator.class.toString());
     }
 
-    public double computeEntropy(int nSym, int nNum, int nChar) {
-//        // letters: 65 - 90 = 26
-//        // capital letters: 97 - 122 = 36
-//        // symbols: 33 - 47, 58 - 64, 91 - 96, 123 - 126  == 15 + 7 + 6 + 4 = 32
-//        // numbers: 48 - 57 = 10
-//        // -> 33 - 126
-//
-//        // entropy
-//        double res = Math.log(Math.pow((Math.signum(nSym) * 32 + Math.signum(nChar) * (26 + 26) + Math.signum(nNum) * 10),
-//                nSym + nNum + nChar)) / Math.log(2);
-//        logger.log(Level.INFO, "{0} Bit Entropy", new Object[]{res});
-//        return res;
-        return 0.0;
-    }
+    // letters: 65 - 90 = 26
+    // capital letters: 97 - 122 = 36
+    // symbols: 33 - 47, 58 - 64, 91 - 96, 123 - 126  == 15 + 7 + 6 + 4 = 32
+    // numbers: 48 - 57 = 10
+    // -> 33 - 126
 
     public double computeEntropy(int length) {
         double entropy = Math.log(Math.pow(32 + 26 + 26 + 10, length)) / Math.log(2);
@@ -73,12 +64,11 @@ public class PasswordGenerator {
             // ASCII
             builder.append((char) i);
         }
-
         return builder.toString();
     }
 
     public void knuthShuffle() {
-
+        // TODO
     }
 
 }

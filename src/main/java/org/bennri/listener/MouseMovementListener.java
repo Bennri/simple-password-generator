@@ -15,7 +15,6 @@ public class MouseMovementListener {
 
     public void collectPoints() {
 
-        // AsyncTask?
         for(int i = 0; i < n; i++) {
             try {
                 Thread.sleep(200);
@@ -25,9 +24,6 @@ public class MouseMovementListener {
             Point x = MouseInfo.getPointerInfo().getLocation();
             coords.add(x);
         }
-
-        // coords.forEach(System.out::println);
-
     }
 
     public int getN() {

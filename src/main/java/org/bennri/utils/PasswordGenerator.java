@@ -3,10 +3,12 @@ package org.bennri.utils;
 import java.awt.*;
 import java.util.*;
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.function.Function;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class PasswordGenerator {
     private Logger logger;
@@ -67,8 +69,31 @@ public class PasswordGenerator {
         return builder.toString();
     }
 
-    public void knuthShuffle() {
-        // TODO
+    public void knuthShuffle(String currentPassword) {
+        // int[] range = IntStream.iterate(0, n -> n + 1).limit(currentPassword.length()).toArray();
+        // System.out.println("Old pw: " + currentPassword);
+        String newPW = knuthShuffleHelper(currentPassword, 0);
+        // System.out.println("new pw: " + newPW);
+
+    }
+
+    public String knuthShuffleHelper(String currentPassword, int idx) {
+        if (idx < currentPassword.length()) {
+            int j = ThreadLocalRandom.current().nextInt(idx, currentPassword.length());
+            char x = currentPassword.charAt(idx);
+            char y = currentPassword.charAt(j);
+            StringBuilder pwBuilder = new StringBuilder(currentPassword);
+            pwBuilder.setCharAt(idx, y);
+            pwBuilder.setCharAt(j, x);
+            // System.out.println("swap i: " + idx + " with j: " + j);
+            // System.out.println("=>swap x: " + x + " with y: " + y);
+            return knuthShuffleHelper(pwBuilder.toString(), idx + 1);
+        }
+        else {
+            return currentPassword;
+        }
+
+
     }
 
 }
